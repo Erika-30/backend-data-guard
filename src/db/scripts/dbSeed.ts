@@ -1,7 +1,7 @@
 import { config as configDotenv } from "dotenv";
+import { pool } from "../../config/dbConfig";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
-import { pool } from "../../config/dbConfig";
 
 if (process.env["NODE_ENV"] === "test") {
   configDotenv({ path: ".env.test" });
