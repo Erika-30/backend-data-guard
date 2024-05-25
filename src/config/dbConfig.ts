@@ -1,5 +1,5 @@
 import { config as configDotenv } from "dotenv";
-import { Pool } from "pg";
+import { Pool, Client } from "pg";
 import { z } from "zod";
 
 if (process.env["NODE_ENV"] === "test") {
@@ -42,6 +42,19 @@ export const query = async (
     throw error;
   }
 };
+
+export const adminClient = new Client({
+  host: PGHOST,
+  port: Number(PGPORT),
+  database: PGADMINDATABASE,
+  user: PGUSER,
+  password: PGPASSWORD,
+});
+
+adminClient.connect().catch((error) => {
+  console.error("Error connecting to admin database", error);
+  throw error;
+});
 
 export const UserSchema = z.object({
   id: z.number().optional(),

@@ -1,5 +1,5 @@
 import { config as configDotenv } from "dotenv";
-import { Client } from "pg";
+import { adminClient, query } from "../../config/dbConfig";
 
 if (process.env["NODE_ENV"] === "test") {
   configDotenv({ path: ".env.test" });
@@ -23,16 +23,6 @@ const createTableQuery = `
 `;
 
 async function createDatabaseAndTable() {
-  const adminClient = new Client({
-    user: process.env["PGUSER"],
-    host: process.env["PGHOST"],
-    database: "postgres",
-    password: process.env["PGPASSWORD"],
-    port: parseInt(process.env["PGPORT"] || "5432"),
-  });
-
-  await adminClient.connect();
-
   try {
     await adminClient.query(`CREATE DATABASE "${dbName}"`);
     console.log(`Base de datos "${dbName}" creada exitosamente`);
@@ -43,28 +33,14 @@ async function createDatabaseAndTable() {
       console.error("Error al crear la base de datos", err.stack);
       throw err;
     }
-  } finally {
-    await adminClient.end();
   }
 
-  const dbClient = new Client({
-    user: process.env["PGUSER"],
-    host: process.env["PGHOST"],
-    database: dbName,
-    password: process.env["PGPASSWORD"],
-    port: parseInt(process.env["PGPORT"] || "5432"),
-  });
-
-  await dbClient.connect();
-
   try {
-    await dbClient.query(createTableQuery);
+    await query(createTableQuery);
     console.log("Tabla 'users' creada exitosamente");
   } catch (err) {
     console.error("Error al crear la tabla", (err as Error).stack);
     throw err;
-  } finally {
-    await dbClient.end();
   }
 }
 

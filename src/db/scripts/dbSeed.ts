@@ -1,7 +1,7 @@
 import { config as configDotenv } from "dotenv";
-import { pool } from "../../config/dbConfig";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
+import { pool, query } from "../../config/dbConfig";
 
 if (process.env["NODE_ENV"] === "test") {
   configDotenv({ path: ".env.test" });
@@ -26,9 +26,11 @@ const seedUsers = async () => {
   const sqlQuery = `INSERT INTO users (username, email, age, role, password) VALUES ${values};`;
 
   console.log(sqlQuery);
-  await pool.query(sqlQuery);
+  await query(sqlQuery);
   console.log("Users inserted");
   pool.end();
 };
 
-seedUsers();
+seedUsers().catch((err) => {
+  console.error("Error al insertar usuarios:", err);
+});

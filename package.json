@@ -8,11 +8,14 @@
     "build": "tsc",
     "start": "node build/index.js",
     "test": "NODE_ENV=test vitest",
-    "db:migrate": "ts-node src/db/scripts/dbMigrate.ts",
+    "db:migrate": "ts-node src/db/scripts/dbMigrate.ts up",
+    "db:migrate:down": "ts-node src/db/scripts/dbMigrate.ts down",
     "db:create": "ts-node src/db/scripts/dbCreate.ts",
     "db:drop": "ts-node src/db/scripts/dbDrop.ts",
-    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate up",
-    "db:seed": "ts-node src/db/scripts/dbSeed.ts"
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate",
+    "db:seed": "ts-node src/db/scripts/dbSeed.ts",
+    "db:truncate": "ts-node src/db/utils.ts truncate",
+    "db:delete": "ts-node src/db/scripts/dbDelete.ts"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

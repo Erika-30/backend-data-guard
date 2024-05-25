@@ -13,8 +13,8 @@ export type User = {
 const roles = ["user", "admin"];
 
 export async function generateUser(): Promise<User> {
-  const username = faker.person.fullName();
-  const email = faker.internet.email();
+  const username = faker.person.fullName().replace(/'/g, "''");
+  const email = faker.internet.email().replace(/'/g, "''");
   const age = faker.number.int({ min: 18, max: 100 });
   const role = faker.helpers.arrayElement(roles);
   const password = await bcrypt.hash("password123", 10);
