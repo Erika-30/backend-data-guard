@@ -1,7 +1,7 @@
 import express from "express";
 import { config as configDotenv } from "dotenv";
 import authRouter from "./api/routes/authRoutes";
-// import { errorMiddleware } from "./api/middlewares/errorMiddleware";
+import { errorMiddleware } from "./api/middlewares/errorMiddleware";
 import uploadRouter from "./api/routes/uploadRoutes";
 import cors from "cors";
 
@@ -19,6 +19,6 @@ app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/user", uploadRouter);
 
-// app.use(errorMiddleware);
+app.use(errorMiddleware);
 
 export default app;
