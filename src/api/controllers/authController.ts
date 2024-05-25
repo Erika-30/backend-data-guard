@@ -55,3 +55,8 @@ export const login = async (
     next(error);
   }
 };
+
+export const logout = async (_req: Request, res: Response) => {
+  // lista de revocacion de tokens... por ver
+  res.status(200).json({ ok: true, message: "Logout successful" });
+};

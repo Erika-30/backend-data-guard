@@ -28,7 +28,7 @@ async function dropDatabaseTable() {
         migrationsFileName
       );
     }
-  } catch (err) {
+  } catch (err: any) {
     console.error("Error al eliminar la tabla", err.stack);
     throw err;
   } finally {
