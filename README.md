@@ -189,3 +189,11 @@ src/
 ├── app.ts
 ├── index.ts
 ```
+
+## Contact
+
+For any inquiries or issues, please contact judithhuisa4@mail.com.
+
+#
+
+Thank you for using Backend Data Guard! Your feedback is highly appreciated.
