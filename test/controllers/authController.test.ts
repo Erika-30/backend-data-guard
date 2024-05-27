@@ -35,4 +35,14 @@ describe("Auth Controller", () => {
     expect(response.body.ok).toBeTruthy();
     expect(response.body).toHaveProperty("token");
   });
+  it("should return an error if email or password are invalid", async () => {
+    const loginData = {
+      email: "invalid@example.com",
+      password: "invalid",
+    };
+
+    const response = await request(app).post("/auth/login").send(loginData);
+    expect(response.body.ok).toBeFalsy();
+    expect(response.body.error.message).toBe("Usuario no encontrado");
+  });
 });
