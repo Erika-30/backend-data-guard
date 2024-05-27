@@ -1,3 +1,5 @@
+// src/db/scripts/dbCreate.ts
+
 import { config as configDotenv } from "dotenv";
 import { adminClient } from "../../config/dbConfig";
 
@@ -13,7 +15,7 @@ async function deleteDatabase() {
   try {
     await adminClient.query(`DROP DATABASE IF EXISTS "${dbName}"`);
     console.log(`Base de datos "${dbName}" eliminada exitosamente`);
-  } catch (err) {
+  } catch (err: any) {
     console.error("Error al eliminar la base de datos", err.stack);
     throw err;
   } finally {
