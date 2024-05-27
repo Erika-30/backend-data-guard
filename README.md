@@ -60,3 +60,23 @@ PGUSER=yourusername
 PGPASSWORD=yourpassword
 PGADMINDATABASE=postgres
 ```
+
+### Database Setup
+
+1. Create the database and tables:
+
+```sh
+npm run db:create
+```
+
+2. Apply migrations:
+
+```sh
+npm run db:migrate
+```
+
+3. Seed the database:
+
+```sh
+npm run db:seed
+```
