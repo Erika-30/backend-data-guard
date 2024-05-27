@@ -90,3 +90,16 @@ npm run dev
 ```
 
 The server will be running at http://localhost:3000.
+
+## API Endpoints
+
+### Authentication
+
+- Signup: POST /auth/signup
+- Login: POST /auth/login
+- Logout: POST /auth/logout
+- Protected Route: GET /auth/protected
+
+## Data Upload
+
+- Upload CSV: POST /user/upload
