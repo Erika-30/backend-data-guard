@@ -29,3 +29,34 @@ Ensure the following are installed on your system:
 - Node.js (version 14.x or higher)
 - PostgreSQL (version 12.x or higher)
 - TypeScript
+
+## Getting Started
+
+### Installation
+
+Clone the repository:
+
+```sh
+git clone https://github.com/yourusername/backend-data-guard.git
+cd backend-data-guard
+```
+
+Install dependencies:
+
+```sh
+npm install
+```
+
+Set up environment variables: Create a .env file in the root directory and add the following variables:
+
+```sh
+NODE_ENV=development
+PORT=3000
+JWT_SECRET=your-secret-key
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=yourdatabase
+PGUSER=yourusername
+PGPASSWORD=yourpassword
+PGADMINDATABASE=postgres
+```
