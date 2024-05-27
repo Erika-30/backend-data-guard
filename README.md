@@ -153,3 +153,39 @@ npm run db:truncate
 ```sh
 npm run db:delete
 ```
+
+## Project Structure
+
+```sh
+src/
+├── api/
+│   ├── controllers/
+│   │   ├── authController.ts
+│   │   └── uploadController.ts
+│   ├── middlewares/
+│   │   ├── authMiddleware.ts
+│   │   └── errorMiddleware.ts
+│   ├── routes/
+│   │   ├── authRoutes.ts
+│   │   └── uploadRoutes.ts
+├── config/
+│   └── dbConfig.ts
+├── data/
+│   └── users.data.ts
+├── db/
+│   ├── migrations/
+│   │   ├── 2024.05.13T14.38.26.create-users-db.ts
+│   │   └── 2024.05.13T14.38.27.seeds-users-table.ts
+│   ├── scripts/
+│   │   ├── dbCreate.ts
+│   │   ├── dbDrop.ts
+│   │   ├── dbMigrate.ts
+│   │   └── dbSeed.ts
+│   └── utils.ts
+├── services/
+│   └── auth.service.ts
+├── utils/
+│   └── validation.ts
+├── app.ts
+├── index.ts
+```
