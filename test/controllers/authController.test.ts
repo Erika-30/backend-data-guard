@@ -24,4 +24,15 @@ describe("Auth Controller", () => {
     expect(response.body.ok).toBeTruthy();
     expect(response.body.data).toHaveProperty("username", user.username);
   });
+
+  it("should login an existing user", async () => {
+    const { email, password } = user;
+    const response = await request(app)
+      .post("/auth/login")
+      .send({ email, password });
+
+    expect(response.status).toBe(200);
+    expect(response.body.ok).toBeTruthy();
+    expect(response.body).toHaveProperty("token");
+  });
 });
