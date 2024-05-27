@@ -80,3 +80,13 @@ npm run db:migrate
 ```sh
 npm run db:seed
 ```
+
+### Running the Application
+
+Start the application in development mode:
+
+```sh
+npm run dev
+```
+
+The server will be running at http://localhost:3000.
