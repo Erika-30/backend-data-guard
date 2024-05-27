@@ -103,3 +103,53 @@ The server will be running at http://localhost:3000.
 ## Data Upload
 
 - Upload CSV: POST /user/upload
+
+## Database Management Commands
+
+-Create the database and tables:
+
+```sh
+npm run db:create
+```
+
+-Drop the tables:
+
+```sh
+npm run db:drop
+```
+
+- Apply migrations:
+
+```sh
+npm run db:migrate
+```
+
+-Revert migrations:
+
+```sh
+npm run db:migrate:down
+```
+
+- Reset the database:
+
+```sh
+npm run db:reset
+```
+
+- Seed the database:
+
+```sh
+npm run db:seed
+```
+
+- Truncate the tables:
+
+```sh
+npm run db:truncate
+```
+
+- Delete the database:
+
+```sh
+npm run db:delete
+```
