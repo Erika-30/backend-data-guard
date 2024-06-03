@@ -1,3 +1,5 @@
+// src/config/dbConfig.ts
+
 import { config as configDotenv } from "dotenv";
 import { Pool, Client } from "pg";
 import { z } from "zod";

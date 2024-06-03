@@ -1,3 +1,5 @@
+// src/db/scripts/dbCreate.ts
+
 import { config as configDotenv } from "dotenv";
 import { adminClient, query } from "../../config/dbConfig";
 

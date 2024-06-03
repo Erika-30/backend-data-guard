@@ -1,3 +1,5 @@
+// src/db/scripts/dbSeed.ts
+
 import { config as configDotenv } from "dotenv";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";

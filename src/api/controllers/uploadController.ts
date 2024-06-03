@@ -1,5 +1,3 @@
-// src/api/controllers/uploadController.ts
-
 import { Response, Request } from "express";
 import csv from "csv-parser";
 import { PassThrough } from "stream";
@@ -12,7 +10,7 @@ interface MulterRequest extends Request {
 
 export const uploadCsv = (req: MulterRequest, res: Response) => {
   if (!req.file) {
-    return res.status(400).json({ ok: false, message: "No file uploaded" });
+    return res.status(400).json({ status: false, message: "No file uploaded" });
   }
 
   const userPromises: any[] = [];
@@ -100,6 +98,43 @@ export const uploadCsv = (req: MulterRequest, res: Response) => {
         message: "Error al leer el archivo CSV: " + error.message,
       });
     });
+};
+
+export const retryUser = async (req: Request, res: Response) => {
+  const userData = req.body;
+
+  const validationResult = UserSchema.safeParse(userData);
+
+  if (!validationResult.success) {
+    return res.status(400).json({
+      status: false,
+      message: "Validation error",
+      errors: validationResult.error.errors.map((error) => ({
+        path: error.path[0] as string,
+        message: error.message,
+      })),
+    });
+  }
+
+  try {
+    const user = await createUser(userData);
+    return res.json({
+      status: true,
+      message: "User created successfully",
+      data: user,
+    });
+  } catch (error: any) {
+    return res.status(400).json({
+      status: false,
+      message: error.message,
+      errors: [
+        {
+          path: error.message === "Email already in use" ? "email" : "general",
+          message: error.message,
+        },
+      ],
+    });
+  }
 };
 
 export class UserDto {

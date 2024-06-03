@@ -1,3 +1,5 @@
+// src/db/scripts/dbMigrate.ts
+
 import { config as configDotenv } from "dotenv";
 import path from "path";
 import fs from "fs";

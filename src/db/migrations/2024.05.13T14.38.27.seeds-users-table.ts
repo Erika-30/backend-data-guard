@@ -1,3 +1,5 @@
+// src/db/migrations/2024.05.13T14.38.27.seeds-users-table.ts
+
 import { Migration } from "../scripts/dbMigrate";
 import { faker } from "@faker-js/faker";
 import bcrypt from "bcrypt";

@@ -1,3 +1,5 @@
+// src/services/auth.service.ts
+
 import { getUserByEmailFromDB, createUserInDB } from "../data/users.data";
 import bcrypt from "bcrypt";
 import { User, UserData } from "../config/dbConfig";

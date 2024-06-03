@@ -1,3 +1,5 @@
+// src/utils/validation.ts
+
 import { UserSchema } from "../config/dbConfig";
 
 export const validateUser = (user: any) => {

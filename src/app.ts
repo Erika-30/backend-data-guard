@@ -1,3 +1,5 @@
+// src/app.ts
+
 import express from "express";
 import { config as configDotenv } from "dotenv";
 import authRouter from "./api/routes/authRoutes";

@@ -1,3 +1,5 @@
+// src/api/controllers/authController.ts
+
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import {
